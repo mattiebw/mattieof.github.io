@@ -10,7 +10,12 @@
   }
 
   .btn {
+    transition: all 0.2s;
     @apply bg-green-500 dark:bg-green-600 hover:bg-green-700 active:bg-green-900 text-neutral-900 dark:text-white dark:text-neutral-200 font-bold py-2 px-4 rounded cursor-pointer select-none;
+  }
+
+  .btn:disabled {
+    @apply bg-neutral-600 dark:bg-neutral-500 cursor-not-allowed
   }
 
   .homepage-header {
@@ -223,6 +228,20 @@
 
   .portfolio-icon-button:hover {
     @apply invert-0
+  }
+
+  .inputBox {
+    outline: #3c9f00 solid 1px;
+    transition: .6s outline-color, 0.1s outline-width;
+    @apply bg-neutral-300 dark:bg-neutral-700 p-2 rounded text-black dark:text-neutral-300
+  }
+
+  .inputBox:focus {
+    outline-width: 3px;
+  }
+
+  .inputBox:invalid {
+    outline-color: #ff0000;
   }
 }
 

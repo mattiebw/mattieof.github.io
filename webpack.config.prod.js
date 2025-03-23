@@ -22,6 +22,7 @@ module.exports = merge(common, {
         { from: 'blog.html', to: 'blog.html' },
         { from: 'contact.html', to: 'contact.html' },
         { from: 'thecv.html', to: 'thecv.html' },
+        { from: 'pi.html', to: 'pi.html' },
         { from: 'site.webmanifest', to: 'site.webmanifest' },
       ],
     }),

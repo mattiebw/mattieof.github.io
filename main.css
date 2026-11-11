@@ -1,0 +1,85 @@
+:root {
+    --bg: #000a0e;
+    --card-bg: #00050a;
+    --text: #e6edf3;
+    --accent: #3ddc84;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Open Sans", system-ui, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.card {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 32px;
+    background: var(--card-bg);
+    border: 1px solid var(--accent);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 10px;
+}
+
+.links a {
+  padding: 10px 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  transition: background 0.2s, color 0.2s;
+}
+
+.links a:hover,
+.links a:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+  outline: none;
+}
+
+.digit {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.digit-inner {
+  display: block;
+  transition: transform 300ms ease-in-out;
+}
+
+.digit-inner span {
+  display: block;
+  height: 1em;
+  line-height: 1em;
+}
+
+.odometer.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+    -webkit-transition-duration: 0.5s !important;
+    -moz-transition-duration: 0.5s !important;
+    -ms-transition-duration: 0.5s !important;
+    -o-transition-duration: 0.5s !important;
+    transition-duration: 0.5s !important
+}

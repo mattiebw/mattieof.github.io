@@ -15,7 +15,8 @@ body {
     font-family: "Open Sans", system-ui, sans-serif;
     background-color: var(--bg);
     color: var(--text);
-    min-height: 100vh;
+    min-height: 100dvh; /* dvh correctly accounts for the toolbar and its visibility */
+    min-height: 100vh;  /* fallback for browsers that don't support dvh */
     display: flex;
     align-items: center;
     justify-content: center;

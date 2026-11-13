@@ -9,8 +9,11 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="main.css" rel="stylesheet">
-        <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-default.css" />
-        <script src="http://github.hubspot.com/odometer/odometer.js"></script>
+
+        <!-- Odometer; https://github.com/HubSpot/odometer -->
+        <!-- Odometer is licensed under the MIT License.   -->
+        <link rel="stylesheet" href="odometer-theme-default.css" />
+        <script src="odometer.js"></script>
 
         <title>Matt Ware</title>
     </head>
@@ -29,14 +32,7 @@
                 <p>I'm on UK time.</p>
             </noscript>
             <p class="js-content" hidden>The time for me right now is <b style="white-space: nowrap;">
-                <span class="digit">1</span>
-                <span class="digit">9</span>
-                <span>:</span>
-                <span class="digit">2</span>
-                <span class="digit">0</span>
-                <span>:</span>
-                <span class="digit">3</span>
-                <span class="digit">0</span>
+                <span id="time" style="letter-spacing: 5px;">19:20:30</span>
             </b></p>
         </main>
     </body>
@@ -51,42 +47,31 @@
         });
 
         // Display the current time in the UK.
-        const digits = document.querySelectorAll(".digit");
-        const time = new Date().toLocaleTimeString('en-GB', {
-                timeZone: 'Europe/London',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-        }).replace(/:/g, '');
-        digits.forEach((digit, index) => {
-            const od = new Odometer({
-                el: digit,
-                duration: 500,
-                value: time[index],
-            })
-        });
-
-        function updateTime() 
+        function timeString()
         {
-            const time = new Date().toLocaleTimeString('en-GB', {
+            return new Date().toLocaleTimeString('en-GB', {
                 timeZone: 'Europe/London',
                 hour: '2-digit',
                 minute: '2-digit',
                 second: '2-digit',
                 hour12: false
             }).replace(/:/g, '');
-
-            digits.forEach((digit, index) => {
-                const old = digit.textContent;
-                const newText = time[index];
-                if (old !== newText) {
-                    digit.textContent = newText;
-                }
-            });
         }
 
-        updateTime();
+        const timeElement = document.getElementById('time');
+
+        const od = new Odometer({
+            el: timeElement,
+            duration: 500,
+            value: timeString(),
+            format: '(:dd)',
+        })
+
+        function updateTime() 
+        {
+            od.update(timeString());
+        }
+
         setInterval(updateTime, 1000);
 
         const parts = ["hello", "@", "ma", "ttwa", ".", "re"];
